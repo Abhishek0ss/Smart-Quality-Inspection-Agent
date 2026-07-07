@@ -1,0 +1,2196 @@
+{
+  "name": "smi google pdf",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inspect",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -896,
+        1048
+      ],
+      "id": "da241c9d-ea3f-4b76-8bca-f8bb06987d72",
+      "name": "Webhook",
+      "webhookId": "f2df511f-7b61-47de-9e3a-d93bcc9b0e75"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8d5fc76f-355e-4845-b3ca-9ca0c5ae871c",
+              "name": "decision",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).decision }}",
+              "type": "string"
+            },
+            {
+              "id": "51e81510-8266-4496-b5d7-69f6550592bb",
+              "name": "defect_type",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).defect_type }}",
+              "type": "string"
+            },
+            {
+              "id": "7061ecb4-5bbe-4beb-af0a-554f3755d2c4",
+              "name": "confidence",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).confidence }}",
+              "type": "number"
+            },
+            {
+              "id": "ffb7efcb-bcd2-4c10-8bd4-7440931cb7c3",
+              "name": "severity",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).severity }}",
+              "type": "string"
+            },
+            {
+              "id": "8c5b9ff3-c578-4a85-bbcd-7a0144f34353",
+              "name": "reason",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).reason }}",
+              "type": "string"
+            },
+            {
+              "id": "48262b4a-ae79-45b8-b119-5235aa2493a3",
+              "name": "inspection_id",
+              "value": "={{ $('Set').item.json.inspection_id }}",
+              "type": "string"
+            },
+            {
+              "id": "1b5067dc-7322-41d1-8bb3-21c2ad2348b9",
+              "name": "timestamp",
+              "value": "={{ $now.toFormat('dd-MM-yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "cf7db6c9-bbcd-4f7e-a348-d05af0d2ba5c",
+              "name": "inspection_type",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).inspection_type }}",
+              "type": "string"
+            },
+            {
+              "id": "43022ec6-c65d-486a-8859-784150a115f6",
+              "name": "treatment",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).treatment ?? 'No treatment required' }}",
+              "type": "string"
+            },
+            {
+              "id": "01d83ed5-3b6d-4cc9-956a-66d6453ac25e",
+              "name": "fix_suggestion",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).fix_suggestion ?? 'No fix_suggestion'}}",
+              "type": "string"
+            },
+            {
+              "id": "d0b1bd00-269b-4862-a615-9df6cde753e7",
+              "name": "correction_needed",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).correction_needed ?? 'Not applicable' }}",
+              "type": "string"
+            },
+            {
+              "id": "55850fd1-dd6c-4677-932e-5912ef6a00f4",
+              "name": "issues_found ",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).issues_found ?? [] }}",
+              "type": "string"
+            },
+            {
+              "id": "afa72b33-aa30-4eb9-a96a-96159337d373",
+              "name": "affected_area_percentage",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).affected_area_percentage ?? 0 }}",
+              "type": "string"
+            },
+            {
+              "id": "a97c4b04-d721-42c6-bd36-367760b4b489",
+              "name": "vulnerability_details",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).vulnerability_details ?? 'Not applicable' }}",
+              "type": "string"
+            },
+            {
+              "id": "05b59d5c-f73d-45a2-982c-c15249c54701",
+              "name": "affected_component",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).affected_component ?? 'Not applicable' }}",
+              "type": "string"
+            },
+            {
+              "id": "4cb166f2-369d-4d1a-af02-28a20f10cdf1",
+              "name": "spread_percentage",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).spread_percentage ?? 0 }}",
+              "type": "string"
+            },
+            {
+              "id": "7f6da950-35ba-46bf-a1a8-a53163ac1b20",
+              "name": "affected_parts ",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).affected_parts ?? 'Not applicable' }}",
+              "type": "string"
+            },
+            {
+              "id": "cc4abcc6-3326-4d00-8a7b-6551c733e24d",
+              "name": "pages_affected ",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).pages_affected ?? 'Not applicable' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        704
+      ],
+      "id": "9ea67438-a3ab-4662-9c59-49230c1357eb",
+      "name": "Extract AI Results"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.decision }}",
+                    "rightValue": "REJECT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "cdf27f46-88af-4396-acf9-73240560ecea"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8206fe42-554a-46bd-a870-b569e22b035d",
+                    "leftValue": "={{ $json.decision }}",
+                    "rightValue": "REVIEW",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b5d0e1d6-9480-40b3-806e-17404aff946a",
+                    "leftValue": "={{ $json.decision }}",
+                    "rightValue": "PASS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        688
+      ],
+      "id": "d6a2ec86-0c65-467c-bb78-463c4a51f2ef",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "744dc809-11b0-492a-997f-902ef5d9da3a",
+              "name": "inspection_id",
+              "value": "={{ $json.body.inspection_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7f92b680-8378-446d-b99f-18b0438f809f",
+              "name": "inspection_type",
+              "value": "={{ $json.body.inspection_type }}",
+              "type": "string"
+            },
+            {
+              "id": "5552e20e-5e0c-4072-955f-d64724fec3a6",
+              "name": "name",
+              "value": "={{ $json.body.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f746d31e-8c02-4a95-b51c-e845b51cdcc2",
+              "name": "image_url",
+              "value": "={{ $json.body.image_url ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "400793ed-d712-46eb-976d-472f523195e1",
+              "name": "github_repo",
+              "value": "={{ $json.body.github_repo ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "46f45058-d67e-4513-bd93-5928d55e7142",
+              "name": "code_snippet",
+              "value": "={{ $json.body.code_snippet ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "036de709-0b3b-422e-8f87-45ec014ca9b0",
+              "name": "plant_type",
+              "value": "={{ $json.body.plant_type ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "eae6053b-36e9-4f68-88f8-af417bec9fd0",
+              "name": "document_link",
+              "value": "={{ $json.body.document_link ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "f84c65f7-f4e0-4fd9-9166-9db690d7e64b",
+              "name": "patient_id",
+              "value": "={{ $json.body.patient_id ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "6bf4ff89-3eb6-4262-835d-171bab847223",
+              "name": "medical_subtype",
+              "value": "={{ $json.body.medical_subtype ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -672,
+        1048
+      ],
+      "id": "9842ca6d-7ac9-4eff-b7fd-16abe16eab7f",
+      "name": "Set"
+    },
+    {
+      "parameters": {
+        "sendTo": "shindapeedikakandy@gmail.com",
+        "subject": "=Product Quality Passed: {{ $('Set').item.json.inspection_id }}, Name: {{ $('Set').item.json.inspection_type }}",
+        "emailType": "text",
+        "message": "=Hello QA Team,\n\nThe product has been successfully passed by the inspection AI, with no significant defects detected.\n\nProduct Details:\n\n* Product ID: {{ $('Set').item.json.inspection_id }}\n* Detected Defect: {{ $('Extract AI Results').item.json.defect_type }}\n* Severity Level: {{ $('Extract AI Results').item.json.severity }}\n* AI Confidence: {{ $('Extract AI Results').item.json.confidence }}\n* AI Reasoning: {{ $('Extract AI Results').item.json.reason }}\n* Inspection Time: {{ $('Extract AI Results').item.json.timestamp }}\n\nNext Step:\nYou may proceed with standard verification or logging as per the quality process.\n\nThank you.\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        1452
+      ],
+      "id": "e3d45a16-134c-4293-8313-913a6646e320",
+      "name": "PASSED",
+      "webhookId": "581a9744-4187-4955-9bbf-2701a55ee64e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "RRPyoPBR86RGj82U",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "shindapeedikakandy@gmail.com",
+        "subject": "=Quality Review Needed- {{ $('Set').item.json.inspection_id }}",
+        "emailType": "text",
+        "message": "=Hello QA Team,\n\nA product has been flagged for manual review by the inspection AI based on a potential quality issue.\n\nProduct Details:\n\n* Product ID: {{ $('Set').item.json.inspection_id }}\n* Suspected Defect: {{ $('Extract AI Results').item.json.defect_type }}\n* Severity Level: {{ $('Extract AI Results').item.json.severity }}\n* AI Confidence: {{ $('Extract AI Results').item.json.confidence }}\n* AI Reasoning: {{ $('Extract AI Results').item.json.reason }}\n* Inspection Time: {{ $('Extract AI Results').item.json.timestamp }}\n\nRequired Action:\nPlease perform a physical inspection to verify the issue and update the quality log accordingly.\n\nThank you.\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1152,
+        964
+      ],
+      "id": "71d5e749-af0c-4a97-8bc3-a382b689ce73",
+      "name": "REVIEW",
+      "webhookId": "a5f83d33-a362-422c-b599-7d7dd0ead88f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "RRPyoPBR86RGj82U",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "shindapeedikakandy@gmail.com",
+        "subject": "=Quality Review Needed- {{ $('Set').item.json.inspection_id }}",
+        "emailType": "text",
+        "message": "=Hello QA Team,\n\nA product has been Rejected by the inspection AI due to a detected defect that exceeds acceptable quality standards.\n\nProduct Details:\n\n* Inspection ID: {{ $('Set').item.json.inspection_id }}\n* Detected Defect: {{ $('Extract AI Results').first().json.defect_type }}\n* Severity Level: {{ $('Extract AI Results').first().json.severity }}\n* AI Confidence: {{ $('Extract AI Results').first().json.confidence }}\n* Reason: {{ $('Extract AI Results').first().json.reason }}\n* Inspection Time: {{ $('Extract AI Results').first().json.timestamp }}\n\nRequired Action:\nPlease immediately remove this product from the production line and conduct a physical inspection. Follow up with root cause analysis and update the quality log accordingly.\n\nThank you.\n",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {
+                "property": "={{ $binary?.data ? 'data' : undefined }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2272,
+        512
+      ],
+      "id": "62f3e58a-b47a-4251-bac0-7829a326efe7",
+      "name": "REJECTED",
+      "webhookId": "951d8072-bbcf-4a13-82e7-c2756e3a0899",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "RRPyoPBR86RGj82U",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s",
+          "mode": "list",
+          "cachedResultName": "Quality Inspection Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Product ID": "={{ $('Set').item.json.inspection_id }}",
+            "Decision": "={{ $('Extract AI Results').item.json.decision }}",
+            "Defect Type": "={{ $('Extract AI Results').item.json.defect_type }}",
+            "Severity": "={{ $('Extract AI Results').item.json.severity }}",
+            "Confidence": "={{ $('Extract AI Results').item.json.confidence }}",
+            "Reason": "={{ $('Extract AI Results').item.json.reason }}",
+            "Date": "={{ $('Extract AI Results').item.json.timestamp }}",
+            "Name": "={{ $('Set').item.json.inspection_type }}"
+          },
+          "matchingColumns": [
+            "Product ID"
+          ],
+          "schema": [
+            {
+              "id": "Product ID",
+              "displayName": "Product ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Defect Type",
+              "displayName": "Defect Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Severity",
+              "displayName": "Severity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Confidence",
+              "displayName": "Confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1152,
+        1452
+      ],
+      "id": "ee0491d3-e3fe-4a9c-8e34-c22995127374",
+      "name": "PASSED PRODUCT LIST",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "X73VYbImkfDFWskt",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s",
+          "mode": "list",
+          "cachedResultName": "Quality Inspection Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Product ID": "={{ $('Set').item.json.inspection_id }}",
+            "Decision": "={{ $('Extract AI Results').item.json.decision }}",
+            "Defect Type": "={{ $('Extract AI Results').item.json.defect_type }}",
+            "Severity": "={{ $('Extract AI Results').item.json.severity }}",
+            "Confidence": "={{ $('Extract AI Results').item.json.confidence }}",
+            "Reason": "={{ $('Extract AI Results').item.json.reason }}",
+            "Date": "={{ $('Extract AI Results').item.json.timestamp }}",
+            "Name": "={{ $('Set').item.json.inspection_type }}"
+          },
+          "matchingColumns": [
+            "Product ID"
+          ],
+          "schema": [
+            {
+              "id": "Product ID",
+              "displayName": "Product ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Defect Type",
+              "displayName": "Defect Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Severity",
+              "displayName": "Severity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Confidence",
+              "displayName": "Confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1376,
+        964
+      ],
+      "id": "9b35a39e-c9ad-4f68-93e7-a538112c0305",
+      "name": "REVIEWED PRODUCTS",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "X73VYbImkfDFWskt",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s",
+          "mode": "list",
+          "cachedResultName": "Quality Inspection Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Product ID": "={{ $('Set').item.json.inspection_id }}",
+            "Decision": "={{ $('Extract AI Results').item.json.decision }}",
+            "Defect Type": "={{ $('Extract AI Results').item.json.defect_type }}",
+            "Severity": "={{ $('Extract AI Results').item.json.severity }}",
+            "Confidence": "={{ $('Extract AI Results').item.json.confidence }}",
+            "Reason": "={{ $('Extract AI Results').item.json.reason }}",
+            "Date": "={{ $('Extract AI Results').item.json.timestamp }}",
+            "Name": "={{ $('Set').item.json.inspection_type }}"
+          },
+          "matchingColumns": [
+            "Product ID"
+          ],
+          "schema": [
+            {
+              "id": "Product ID",
+              "displayName": "Product ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Defect Type",
+              "displayName": "Defect Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Severity",
+              "displayName": "Severity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Confidence",
+              "displayName": "Confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2496,
+        512
+      ],
+      "id": "a5c6f444-dba3-43dc-bd76-707fd38d4268",
+      "name": "REJECTED PRODUCTS",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "X73VYbImkfDFWskt",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.inspection_type.toLowerCase()}}",
+                    "rightValue": "product",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "195f81b4-9346-4497-bd86-8293bdada2ff"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f6b560a2-7318-40e5-9535-55626956fc1b",
+                    "leftValue": "={{ $json.inspection_type.toLowerCase()}}",
+                    "rightValue": "plant",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cef6878a-f4cb-4b8f-b975-195ab192b08d",
+                    "leftValue": "={{ $json.inspection_type.toLowerCase()}}",
+                    "rightValue": "software",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "192e1d63-cccb-439b-8200-649ebc4f13c6",
+                    "leftValue": "={{ $json.inspection_type.toLowerCase()}}",
+                    "rightValue": "document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "afa2c180-f3d9-49da-80f0-3a88c733933f",
+                    "leftValue": "={{ $json.inspection_type.toLowerCase()}}",
+                    "rightValue": "medical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -448,
+        1000
+      ],
+      "id": "4aa2952f-bd42-4f42-9fe0-40daf2ab9303",
+      "name": "Route by Inspection Type"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You will receive a plant name, plant type, and an image URL of the plant.\nYour job is to carefully analyze the plant image for any health issues, diseases, or defects.\n\nWHAT TO LOOK FOR:\n- Leaf health: yellowing, browning, spots, holes, wilting, curling\n- Pest damage: insect bites, larvae presence, webbing, tunneling marks\n- Disease: fungal infections, bacterial spots, viral mosaic patterns, rot\n- Nutrient deficiency: chlorosis, purple discoloration, stunted growth\n- Physical damage: broken stems, root exposure, mechanical damage\n- Overall vigor: plant posture, stem strength, growth pattern\n\nPLANT DETAILS:\nInspection ID : {{ $json.inspection_id }}\nPlant Name    : {{ $json.name }}\nPlant Type    : {{ $json.plant_type }}\nImage URL     : {{ $json.image_url }}\n\nCarefully analyze the plant image at the URL above and return ONLY a valid JSON object with absolutely no extra text:\n\n{\n  \"defect_found\": true or false,\n  \"defect_type\": \"fungal disease / bacterial infection / pest damage / nutrient deficiency / physical damage / wilting / none\",\n  \"affected_parts\": \"which parts of the plant are affected\",\n  \"spread_percentage\": estimated percentage of plant affected as number,\n  \"confidence\": decimal number between 0.0 and 1.0,\n  \"severity\": \"low / medium / high / critical / none\",\n  \"decision\": \"PASS / REVIEW / REJECT\",\n  \"reason\": \"one clear professional sentence explaining the plant health decision\",\n  \"treatment\": \"specific recommended treatment or action for this plant condition\",\n  \"inspection_type\": \"plant\"\n}\n\nDECISION RULES — follow strictly:\n- defect_found is true AND confidence >= 0.85 → decision MUST be REJECT (quarantine plant)\n- defect_found is true AND confidence between 0.50 and 0.84 → decision MUST be REVIEW (monitor closely)\n- defect_found is false OR confidence below 0.50 → decision MUST be PASS (plant is healthy)",
+        "options": {
+          "systemMessage": "You are an expert botanist and agricultural plant health specialist with 15 years of field experience.",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        0,
+        400
+      ],
+      "id": "05e23dda-8fb5-48eb-9c99-d590f20a6a46",
+      "name": "Plant"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You will receive either:\n1. Data which contains the code.\n2. A code snippet — analyze the code directly.\n\nYour job is to inspect the software for bugs, security issues, performance problems, and code quality.\n\nWHAT TO LOOK FOR:\n- Security: SQL injection, XSS, hardcoded credentials, exposed API keys, authentication flaws\n- Bugs: null pointer exceptions, infinite loops, unhandled errors, wrong logic\n- Performance: inefficient algorithms, memory leaks, unnecessary loops, blocking operations\n- Code Quality: poor naming, no error handling, missing validations, bad practices\n- Dependencies: outdated packages, known vulnerable libraries\n\nSOFTWARE DETAILS:\nInspection ID  : {{ $('Set').item.json.inspection_id }}\nSoftware Name  : {{ $('Set').item.json.inspection_type }}\nGitHub Repo    : {{ $('Set').item.json.github_repo }}\nCode Snippet   : {{ $('Set').item.json.code_snippet }}\n\nAnalyze the GitHub repository URL or code snippet provided above and return ONLY a valid JSON object with absolutely no extra text:\n\n{\n  \"defect_found\": true or false,\n  \"defect_type\": \"security vulnerability / critical bug / performance issue / logic error / code quality issue / none\",\n  \"vulnerability_details\": \"specific technical description of the issue found\",\n  \"confidence\": decimal number between 0.0 and 1.0,\n  \"severity\": \"low / medium / high / critical / none\",\n  \"decision\": \"PASS / REVIEW / REJECT\",\n  \"reason\": \"one clear professional sentence explaining the decision\",\n  \"fix_suggestion\": \"specific actionable fix suggestion for the developer\",\n  \"affected_component\": \"which part of the code is affected\",\n  \"inspection_type\": \"software\"\n}\n\nDECISION RULES — follow strictly:\n- defect_found is true AND confidence >= 0.85 → decision MUST be REJECT\n- defect_found is true AND confidence between 0.50 and 0.84 → decision MUST be REVIEW\n- defect_found is false OR confidence below 0.50 → decision MUST be PASS\n\nIMPORTANT: If a GitHub repo URL is provided, analyze it as a real repository.\nIf code snippet is provided, analyze the actual code given.\nIf both are empty, return confidence 0.1 and decision PASS with reason stating no code was provided.\n\nData = {{ $json.data }}",
+        "options": {
+          "systemMessage": "You are a senior software engineer and code quality expert with deep knowledge of security vulnerabilities, performance issues, and software best practices.",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        0,
+        800
+      ],
+      "id": "a1785ed7-758a-4863-909d-71460a2842d6",
+      "name": "software",
+      "retryOnFail": false,
+      "waitBetweenTries": 3000
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Your document to inspect is {{ $json.data }}.\nYOUR EVALUATION PHILOSOPHY:\nMinor issues like small formatting inconsistencies, one or two \nspelling errors, or slight style variations are completely normal \nand do NOT make a document rejectable. You only reject documents \nthat have serious problems that genuinely prevent the document \nfrom serving its intended purpose.\n\nWHAT COUNTS AS REJECT (serious issues only):\n- Critical missing information like no signatures on a legal contract\n- Wrong company name, wrong dates, or completely incorrect data\n- Major compliance violations that break legal or regulatory requirements\n- Entire sections missing that are mandatory\n- Document is clearly the wrong type or completely irrelevant\n- Fraudulent or misleading information detected\n\nWHAT COUNTS AS REVIEW (moderate issues):\n- Some important fields are incomplete but document is mostly correct\n- Information needs verification but looks mostly right\n- Minor compliance questions that need a human to confirm\n- Slightly ambiguous language in important clauses\n- A few errors across multiple sections\n\nWHAT COUNTS AS PASS (document is acceptable):\n- Document serves its intended purpose clearly\n- All major required fields are present\n- Minor spelling or formatting issues that do not affect meaning\n- Small stylistic inconsistencies\n- One or two trivial errors in non critical sections\n- Overall document is professional and complete\n\nDOCUMENT DETAILS:\nInspection ID   : {{ $('Set').item.json.inspection_id }}\nDocument Name   : {{ $('Set').item.json.name }}\n\n\n{\n  \"defect_found\": true or false,\n  \"defect_type\": \"critical missing information / wrong data / compliance violation / incomplete sections / none\",\n  \"issues_found\": [\"only list SERIOUS issues here, ignore minor ones\"],\n  \"pages_affected\": \"which pages have serious issues or none\",\n  \"confidence\": decimal between 0.0 and 1.0,\n  \"severity\": \"low / medium / high / critical / none\",\n  \"decision\": \"PASS / REVIEW / REJECT\",\n  \"reason\": \"one honest professional sentence about the overall document quality\",\n  \"correction_needed\": \"specific correction if needed or none required\",\n  \"inspection_type\": \"document\"\n}\n\nSTRICT DECISION RULES:\n- REJECT only if confidence >= 0.80 AND a SERIOUS defect exists\n- REVIEW if confidence is 0.50 to 0.79 AND issue genuinely affects document purpose\n- PASS if no serious defects OR confidence below 0.50 OR only minor issues found\n\nIMPORTANT REMINDERS:\n- A document with minor typos is still a PASS\n- A document with good content but slight formatting issues is still a PASS\n- Only flag issues that would genuinely prevent the document from being used\n- Be practical and fair — most well-written documents should PASS\n- If document link is not accessible or available return decision REVIEW with reason \n  stating document could not be accessed for inspection. \n\nSEVERITY SCORING GUIDE:\n- critical: Document cannot be used at all, major fraud or completely wrong\n- high: Important sections missing, significant wrong data\n- medium: Some fields need correction but document mostly works\n- low: Minor issues only, document is acceptable as is\n- none: Document is clean and professional\n\nCONFIDENCE SCORING GUIDE:\n- 0.90 to 1.0: Very obvious serious problem clearly visible\n- 0.70 to 0.89: Probable issue that needs checking\n- 0.50 to 0.69: Possible issue but not certain\n- Below 0.50: No clear issue found, document looks acceptable",
+        "options": {
+          "systemMessage": "You are a senior document compliance officer with 20 years of experience. \nYou understand that no document is perfectly flawless and you make \npractical, realistic quality decisions.",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        0,
+        1200
+      ],
+      "id": "9b9af92f-43a1-45b2-a3d5-e10a214bb932",
+      "name": "document"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0ASQP4ACCR",
+          "mode": "list",
+          "cachedResultName": "smart-quality-alerts"
+        },
+        "text": "=⚠️ *MANUAL REVIEW REQUIRED*\n*Product ID:* {{ $('Set').item.json.inspection_id }}\n*Inspection Type: {{ $json.inspection_type }}\n*Predicted Defect:* {{$json.defect_type}} (Confidence: {{$json.confidence}})\n*AI Reason:* {{$json.reason}}\n\nThis item was flagged for review. Please inspect the dashboard or item and take action.",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        964
+      ],
+      "id": "a7fae12f-cedb-44a0-83bc-6611ebc1af50",
+      "name": "Slack - QA Review Alert",
+      "webhookId": "91d1c9fc-aafd-47b3-999d-987ac8d57345",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "DQq447inlPuX8wEl",
+          "name": "Slack OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [],
+          "number": [],
+          "string": [
+            {
+              "value1": "={{$json.inspection_type}}",
+              "value2": "software"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        928,
+        512
+      ],
+      "id": "f9c21398-610a-430c-a936-23bfc9c9ce52",
+      "name": "Is Software Defect?"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $('Set').item.json.github_repo }}",
+          "mode": "url"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "={{ $('Set').item.json.github_repo }}",
+          "mode": "url"
+        },
+        "title": "=Bug: {{ $('Extract AI Results').item.json.defect_type }} detected in {{ $('Set').item.json.inspection_id }}",
+        "body": "=**AI Defect Detection Report**\n\n* **Severity:** {{ $('Extract AI Results').item.json.severity }}\n* **Confidence:** {{ $('Extract AI Results').item.json.confidence }}\n* **Reasoning:** {{ $('Extract AI Results').item.json.reason }}\n* **Suggested Fix:** {{ $('Extract AI Results').item.json.fix_suggestion }}\n\n*Ticket auto-generated by Smart Quality Inspection Agent.*",
+        "labels": [
+          {
+            "label": "bug"
+          },
+          {
+            "label": "ai-reported"
+          },
+          {
+            "label": "rejection"
+          }
+        ],
+        "assignees": []
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        440
+      ],
+      "id": "edd4c1b9-db09-4c27-8b89-58253b7ca592",
+      "name": "Create GitHub Issue",
+      "webhookId": "b92e2d82-6036-462d-8819-e2d08c3b3a81",
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "4OEV8PBV819A2pbd",
+          "name": "GitHub OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "folderId": "1evr4wxI8VhnQNiGqBryv_jKai8AQhAl1",
+        "title": "=QA Report - {{ $('Set').item.json.inspection_id }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1376,
+        512
+      ],
+      "id": "5b137342-85aa-46df-b34f-c13a923f6b5f",
+      "name": "Create Google Doc Report",
+      "retryOnFail": true,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "XFn4GoucQrCcpSgQ",
+          "name": "Google Docs OAuth2 API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.documentId ?? $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2048,
+        440
+      ],
+      "id": "ccee69aa-97a3-40af-beb5-a4b3308993ec",
+      "name": "Download as PDF",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "6xwtNfZdsBZUhioq",
+          "name": "Google Drive OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        72,
+        1024
+      ],
+      "id": "0c417968-9bd4-467c-b7b4-efbca4c92835",
+      "name": "Groq Chat Model1",
+      "credentials": {
+        "groqApi": {
+          "id": "hgvmHfyvE2uuC5CQ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "=SMART QUALITY INSPECTION AGENT\nOfficial Rejection Report\n\nREPORT INFORMATION\nInspection ID    : {{ $('Extract AI Results').first().json.inspection_id }}\nItem Name        : {{ $('Set').item.json.name }}\nInspection Type  : {{ $('Extract AI Results').first().json.inspection_type }}\nGenerated On     : {{ $('Extract AI Results').first().json.timestamp }}\n\n\nFINAL DECISION\nDecision         : REJECTED\nDefect Type      : {{ $('Extract AI Results').first().json.defect_type }}\nSeverity         : {{ $('Extract AI Results').first().json.severity }}\nConfidence       : {{ Math.round($('Extract AI Results').first().json.confidence * 100) }}%\n\n\nINSPECTION DETAILS\nItem Name        : {{ $('Set').item.json.name }}\nType             : {{ $('Extract AI Results').first().json.inspection_type }}\nDefect           : {{ $('Extract AI Results').first().json.defect_type }}\nSeverity         : {{ $('Extract AI Results').first().json.severity }}\nTimestamp        : {{ $('Extract AI Results').first().json.timestamp }}\n\n\nAI ANALYSIS\n{{ $('Extract AI Results').first().json.reason }}\n\n\nCORRECTIVE ACTION\n{{\n$('Extract AI Results').first().json.treatment && \n$('Extract AI Results').first().json.treatment !== 'Not applicable'\n? $('Extract AI Results').first().json.treatment\n\n: $('Extract AI Results').first().json.fix_suggestion && \n  $('Extract AI Results').first().json.fix_suggestion !== 'Not applicable'\n? $('Extract AI Results').first().json.fix_suggestion\n\n: $('Extract AI Results').first().json.correction_needed && \n  $('Extract AI Results').first().json.correction_needed !== 'Not applicable'\n? $('Extract AI Results').first().json.correction_needed\n\n: 'Remove defective item immediately and conduct root cause analysis.'\n}}\n\n\nAUDIT TRAIL\nReport ID        : {{ $('Extract AI Results').first().json.inspection_id }}\nGenerated By     : Smart Quality Inspection Agent\nReport Type      : Official Rejection Certificate\nRetain this document for audit and compliance records."
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1824,
+        440
+      ],
+      "id": "baa08163-5d63-426c-89e9-88d680ac83c6",
+      "name": "Report content",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "XFn4GoucQrCcpSgQ",
+          "name": "Google Docs OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c3848110-5f90-499e-9a9e-71d8565d0915",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "={{ $json.id }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1600,
+        512
+      ],
+      "id": "a645720c-dc21-41dd-9dcc-a1a55fa4d102",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You will receive a product name and a product image as binary data.\n\nYour task is to carefully analyze the provided image for any quality defects.\n\nWHAT TO LOOK FOR:\n\n* Surface defects: scratches, cracks, dents, chips\n* Color defects: discoloration, uneven coating, rust, stains\n* Structural defects: deformation, warping, misalignment, breakage\n* Finish defects: rough edges, poor finishing, peeling\n\nPRODUCT DETAILS:\nInspection ID : {{ $json.inspection_id }}\nProduct Name  : {{ $json.name }}\n\nThe product image is provided as binary input. Analyze the image thoroughly and return ONLY a valid JSON object. Do not include any explanation, markdown, or extra text outside the JSON.\n\n{\n\"defect_found\": true or false,\n\"defect_type\": \"scratch / crack / discoloration / deformation / rust / poor finishing / none\",\n\"affected_area_percentage\": estimated percentage of product affected as number,\n\"confidence\": decimal number between 0.0 and 1.0,\n\"severity\": \"low / medium / high / critical / none\",\n\"decision\": \"PASS / REVIEW / REJECT\",\n\"reason\": \"one clear professional sentence explaining the decision\",\n\"inspection_type\": \"product\"\n}\n\nDECISION RULES — follow strictly:\n\n* defect_found is true AND confidence >= 0.85 → decision MUST be REJECT\n* defect_found is true AND confidence between 0.50 and 0.84 → decision MUST be REVIEW\n* defect_found is false OR confidence below 0.50 → decision MUST be PASS\n",
+        "options": {
+          "systemMessage": "You are an expert manufacturing quality control engineer with 20 years of experience.",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b2c7030f-e80e-4540-9976-56c4ba99abe1",
+      "name": "products"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set').item.json.image_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -224,
+        104
+      ],
+      "id": "e5476a20-79ee-4dea-9b35-ec9d91238c0b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set').item.json.image_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -224,
+        504
+      ],
+      "id": "052705f7-a201-4563-95d1-f7f4a8e12880",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        72,
+        224
+      ],
+      "id": "e6b27392-a6b0-4e01-9f5c-f35904761d29",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pbYxwdc4eCgJ3mFS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        72,
+        624
+      ],
+      "id": "c3cbd127-46bd-4780-91cd-a2ec3e6634e4",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pbYxwdc4eCgJ3mFS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set').item.json.github_repo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -224,
+        904
+      ],
+      "id": "5d733527-d736-4fc8-bf7a-fe619f26ab30",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.document_link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -224,
+        1304
+      ],
+      "id": "5454853f-ed87-43cb-9a9e-273d7eb1ee01",
+      "name": "HTTP Request4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        72,
+        1424
+      ],
+      "id": "b524317a-35fe-40ba-9836-f005f586d368",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pbYxwdc4eCgJ3mFS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Set').item.json.medical_subtype }}",
+                    "rightValue": "lab_report",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7b32a1da-12bc-45c2-a302-b33ca8714b60"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a30ac121-cd9a-4c33-bd95-e47e993851bf",
+                    "leftValue": "={{ $('Set').item.json.medical_subtype }}",
+                    "rightValue": "medicine",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -224,
+        1944
+      ],
+      "id": "cf773f82-2556-4410-92cf-9b80cdb88879",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set').item.json.document_link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -16,
+        1872
+      ],
+      "id": "7c018d72-014c-43f3-a54b-a50e588fb680",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Your job is to carefully READ the medical document \nat the link provided and extract every piece of \ninformation from it. You provide a complete, \ndetailed, professional analysis for the medical team.\n\nYOU ARE ANALYZING: A Medical Lab Report or Medical Document\n\nSTEP 1 — ACCESS THE DOCUMENT:\nOpen the document link provided below and read \nthe entire document carefully from top to bottom.\n\nSTEP 2 — EXTRACT ALL INFORMATION:\n\nPatient Information:\nExtract patient name, age, gender, patient ID, \ncontact details if present, date of birth if present\n\nReport Header Information:\nExtract hospital name, laboratory name, lab \nregistration number, report ID, report date, \ncollection date, reporting date\n\nTest Results:\nFor every single test found in the report extract:\n- Exact test name\n- Exact result value with unit\n- Reference range shown in report\n- Whether value is within or outside normal range\n- Whether abnormal value is flagged or not flagged\n\nDoctor and Authorization:\nCheck if referring doctor name is present\nCheck if pathologist or lab doctor signature is present\nCheck if doctor registration number is present\n\nDocument Quality:\nNote any missing fields\nNote any unclear or unreadable sections\nNote any inconsistencies in the document\nNote overall completeness of the document\n\nSTEP 3 — PROVIDE MEDICAL INSIGHTS:\nBased on the test results provide medical observations\nsuch as which organ systems may be affected by \nabnormal values, what the abnormal values might \nindicate medically, and what follow up tests might \nbe relevant based on findings.\n\nIMPORTANT:\nYou are providing analysis and insights only.\nYou are not diagnosing any patient.\nAlways note that findings should be reviewed \nby a qualified medical professional.\n\nIf the document link is not accessible or cannot \nbe opened set accessible to false and stop there.\n\nINSPECTION DETAILS:\nInspection ID  : {{ $('Set').item.json.inspection_id }}\nReport Name    : {{ $('Set').item.json.name }}\nPatient ID     : {{ $('Set').item.json.patient_id }}\nDocument Link  : {{ $('Set').item.json.document_link }}\n\nReturn ONLY valid JSON with no extra text:\n\n{\n  \"accessible\": true or false,\n  \"inspection_id\": \"inspection id provided\",\n  \"report_name\": \"name of report\",\n  \"patient_info\": {\n    \"name\": \"patient name found or not found\",\n    \"age\": \"age found or not found\",\n    \"gender\": \"gender found or not found\",\n    \"patient_id\": \"patient id found or not found\",\n    \"date_of_birth\": \"dob found or not found\",\n    \"name_present\": true or false,\n    \"age_present\": true or false,\n    \"gender_present\": true or false,\n    \"patient_id_present\": true or false\n  },\n  \"report_header\": {\n    \"hospital_name\": \"hospital or lab name found\",\n    \"lab_registration\": \"present or not present\",\n    \"report_id\": \"report id found or not found\",\n    \"report_date\": \"date found or not found\",\n    \"collection_date\": \"collection date or not found\",\n    \"reporting_date\": \"reporting date or not found\"\n  },\n  \"test_results\": [\n    {\n      \"test_name\": \"exact test name\",\n      \"value\": \"exact result value\",\n      \"unit\": \"unit of measurement\",\n      \"reference_range\": \"normal range from report\",\n      \"status\": \"normal or abnormal\",\n      \"flagged_in_report\": true or false,\n      \"clinical_significance\": \"brief note on what this value means medically\"\n    }\n  ],\n  \"abnormal_findings\": [\n    {\n      \"test_name\": \"test name\",\n      \"value\": \"abnormal value\",\n      \"normal_range\": \"what it should be\",\n      \"deviation\": \"how far from normal\",\n      \"flagged\": true or false\n    }\n  ],\n  \"unflagged_abnormals\": [\"list of abnormal values not flagged in report\"],\n  \"signature_present\": true or false,\n  \"referring_doctor\": \"doctor name or not found\",\n  \"doctor_registration\": \"registration number or not found\",\n  \"overall_completeness\": \"complete / mostly complete / incomplete\",\n  \"missing_elements\": [\"list of missing elements\"],\n  \"quality_observations\": [\"list of document quality observations\"],\n  \"medical_insights\": [\n    {\n      \"observation\": \"clinical observation based on results\",\n      \"possible_indication\": \"what this might indicate medically\",\n      \"recommended_followup\": \"suggested follow up action\"\n    }\n  ],\n  \"summary\": \"three to four sentence professional summary of the complete report findings and key observations\",\n  \"disclaimer\": \"This analysis is for informational purposes only and should be reviewed by a qualified medical professional\",\n  \"inspection_type\": \"medical\",\n  \"medical_subtype\": \"lab_report\"\n}",
+        "options": {
+          "systemMessage": "You are a senior medical laboratory analyst and \nclinical documentation expert with 25 years of \nexperience reading and interpreting medical reports.\n\n",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        240,
+        1760
+      ],
+      "id": "aad77fa8-8ac4-4d2f-beea-dd829d6b59dd",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        256,
+        1920
+      ],
+      "id": "c3d62504-7476-4f4f-b53a-a8d155a0a59c",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pbYxwdc4eCgJ3mFS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Set').item.json.image_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -16,
+        2080
+      ],
+      "id": "203be6e5-fda2-4a82-bac7-73f06f0c3ab8",
+      "name": "HTTP Request5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Your job is to EXAMINE the medicine image provided AND \nuse your pharmaceutical knowledge to provide complete \ninformation about the medicine including its composition, \nside effects, interactions, and quality assessment.\n\nYOU ARE ANALYZING: Medicine or Pharmaceutical Product\n\nSTEP 1 — VISUAL QUALITY EXAMINATION:\nCarefully look at the medicine image and assess:\n- Tablet or capsule physical condition\n- Color uniformity and consistency\n- Surface quality and integrity\n- Packaging condition and seal\n- Label readability\n- Expiry date visibility\n- Batch number visibility\n- Any signs of damage or contamination\n\nSTEP 2 — MEDICINE IDENTIFICATION:\nBased on the medicine name provided and what you \ncan see in the image, identify the medicine and \nprovide complete pharmaceutical information.\n\nSTEP 3 — COMPLETE MEDICINE PROFILE:\nProvide the following information about this medicine:\n\nComposition and Ingredients:\n- Active pharmaceutical ingredient with exact amount\n- All inactive ingredients or excipients if known\n- Drug class and category\n\nTherapeutic Information:\n- What conditions or diseases this medicine treats\n- How this medicine works in the body\n- Onset of action and duration of effect\n\nDosage Information:\n- Standard adult dosage\n- Pediatric dosage if applicable\n- Maximum daily dose\n- How to take the medicine\n- With food or without food\n\nSide Effects:\n- Common side effects occurring in more than 10% of patients\n- Uncommon side effects occurring in 1 to 10% of patients\n- Rare but serious side effects\n- Side effects requiring immediate medical attention\n\nDrug Interactions:\n- Medicines that should not be taken with this medicine\n- Medicines that require caution when combined\n- Food and drink interactions\n- Herbal supplement interactions\n\nContraindications:\n- Who should not take this medicine\n- Medical conditions where this medicine is dangerous\n- Age restrictions if any\n- Pregnancy and breastfeeding safety\n\nStorage Instructions:\n- Temperature requirements\n- Light sensitivity\n- Moisture requirements\n- Special storage conditions\n\nIMPORTANT:\nYou are providing pharmaceutical information only.\nAlways recommend consulting a doctor or pharmacist \nbefore taking any medicine.\n\nIf the image URL is not accessible or cannot be \nloaded set accessible to false.\n\nINSPECTION DETAILS:\nInspection ID  : {{ $('Set').item.json.inspection_id }}\nMedicine Name  : {{ $('Set').item.json.name }}\nImage URL      : {{ $('Set').item.json.image_url }}\n\nReturn ONLY valid JSON with no extra text:\n\n{\n  \"accessible\": true or false,\n  \"inspection_id\": \"inspection id provided\",\n  \"medicine_name\": \"medicine name\",\n  \"visual_quality\": {\n    \"tablet_condition\": \"good / damaged / contaminated / not visible\",\n    \"color_uniformity\": \"uniform / minor variation / significant variation / not visible\",\n    \"surface_quality\": \"good / minor marks / damaged / not visible\",\n    \"broken_units_visible\": true or false,\n    \"contamination_visible\": true or false,\n    \"moisture_damage_visible\": true or false,\n    \"packaging_seal\": \"intact / compromised / damaged / not visible\",\n    \"label_readable\": true or false,\n    \"expiry_date_visible\": true or false,\n    \"batch_number_visible\": true or false,\n    \"overall_visual_quality\": \"acceptable / needs review / poor\"\n  },\n  \"medicine_profile\": {\n    \"brand_name\": \"brand name of medicine\",\n    \"generic_name\": \"generic or chemical name\",\n    \"drug_class\": \"pharmacological class\",\n    \"dosage_form\": \"tablet / capsule / syrup / injection etc\",\n    \"strength\": \"dosage strength eg 500mg\"\n  },\n  \"composition\": {\n    \"active_ingredient\": \"active ingredient with amount\",\n    \"inactive_ingredients\": [\"list of known excipients\"],\n    \"drug_category\": \"category of drug\"\n  },\n  \"therapeutic_use\": {\n    \"indications\": [\"list of conditions this medicine treats\"],\n    \"mechanism_of_action\": \"how this medicine works in the body\",\n    \"onset_of_action\": \"how long to start working\",\n    \"duration_of_effect\": \"how long effect lasts\"\n  },\n  \"dosage\": {\n    \"adult_dose\": \"standard adult dosage\",\n    \"pediatric_dose\": \"child dosage or not recommended\",\n    \"maximum_daily_dose\": \"maximum safe daily dose\",\n    \"how_to_take\": \"with food / without food / with water etc\",\n    \"frequency\": \"how many times per day\",\n    \"duration\": \"typical course duration\"\n  },\n  \"side_effects\": {\n    \"common\": [\"side effects in more than 10 percent of patients\"],\n    \"uncommon\": [\"side effects in 1 to 10 percent of patients\"],\n    \"rare_serious\": [\"rare but serious side effects\"],\n    \"seek_immediate_help\": [\"side effects requiring emergency attention\"]\n  },\n  \"drug_interactions\": {\n    \"avoid_with\": [\"medicines that must not be combined\"],\n    \"use_with_caution\": [\"medicines requiring careful monitoring\"],\n    \"food_interactions\": [\"food and drink to avoid\"],\n    \"herbal_interactions\": [\"herbal supplements to avoid\"]\n  },\n  \"contraindications\": {\n    \"who_should_not_take\": [\"conditions where medicine is dangerous\"],\n    \"age_restrictions\": \"any age related restrictions\",\n    \"pregnancy\": \"safe / unsafe / consult doctor\",\n    \"breastfeeding\": \"safe / unsafe / consult doctor\",\n    \"medical_conditions_to_avoid\": [\"conditions that make this medicine dangerous\"]\n  },\n  \"storage\": {\n    \"temperature\": \"storage temperature requirement\",\n    \"light\": \"keep away from light or normal storage\",\n    \"moisture\": \"keep dry or normal storage\",\n    \"special_instructions\": \"any special storage requirements\"\n  },\n  \"observations\": [\"detailed list of visual observations from image\"],\n  \"concerns\": [\"list of quality concerns noticed if any\"],\n  \"estimated_affected_units_percentage\": number between 0 and 100,\n  \"summary\": \"three to four sentence professional summary covering both visual quality and key pharmaceutical information\",\n  \"disclaimer\": \"This information is for reference only. Always consult a qualified doctor or pharmacist before taking any medicine.\",\n  \"inspection_type\": \"medical\",\n  \"medical_subtype\": \"medicine\"\n}",
+        "options": {
+          "systemMessage": "You are a senior clinical pharmacist and pharmaceutical \nquality expert with 25 years of experience in drug \nanalysis, pharmacology, and medicine quality control.\n",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        240,
+        2176
+      ],
+      "id": "5ee39e4b-1e41-4202-8986-2e49dc816bc3",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78078f5f-49db-47fa-b031-1fe80e8b62cc",
+              "name": "accessible",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).accessible ?? false }}",
+              "type": "string"
+            },
+            {
+              "id": "de944ec0-23d2-47ca-b321-ebf5d216212d",
+              "name": "inspection_id",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).inspection_id ?? $('Set').first().json.inspection_id }}",
+              "type": "string"
+            },
+            {
+              "id": "32c96f05-c63f-4d1d-90b2-894a086b44d2",
+              "name": "report_name",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).report_name ?? $('Set').first().json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "067c60c5-15d0-432f-98aa-648c508c335c",
+              "name": "medical_subtype",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).medical_subtype ?? $('Set').first().json.medical_subtype }}",
+              "type": "string"
+            },
+            {
+              "id": "e7a76434-b847-40c9-9419-8800fa77e989",
+              "name": "summary",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).summary ?? 'No summary available' }}",
+              "type": "string"
+            },
+            {
+              "id": "42710b81-5b8d-4cdd-973a-f23c534589e0",
+              "name": "disclaimer",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).disclaimer ?? 'Please consult a qualified medical professional' }}",
+              "type": "string"
+            },
+            {
+              "id": "22f0fa0c-452a-4ae1-8404-5dda47d0b1f9",
+              "name": "patient_info",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).patient_info ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "1ae9db09-613c-40e4-a12e-d686f9dc1e6d",
+              "name": "report_header",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).report_header ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "1c3518b4-4df8-4e77-bfe9-2abcd81b27a8",
+              "name": "test_results",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).test_results ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "f17f8a3b-5104-4c51-9de3-60231d4b52a6",
+              "name": "abnormal_findings",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).abnormal_findings ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "dab12bc4-0196-4846-9ffb-78f5536c8c75",
+              "name": "unflagged_abnormals",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).unflagged_abnormals ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "dd05b013-42c6-4e26-830f-94dca71dee16",
+              "name": "signature_present",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).signature_present ?? false }}",
+              "type": "string"
+            },
+            {
+              "id": "198d279a-b1d6-4d3b-bf46-af94e50df7e8",
+              "name": "overall_completeness",
+              "value": "={{ JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).overall_completeness ?? 'Not assessed' }}",
+              "type": "string"
+            },
+            {
+              "id": "fb0f9695-a0cb-46b3-a6b8-280341777cde",
+              "name": "medical_insights",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).medical_insights ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "9e22b7c1-4db6-49d0-be88-5856d684feb1",
+              "name": "composition",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).composition ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "35539fd8-45b7-4e3d-8916-7e10f72b008e",
+              "name": "medicine_profile",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).medicine_profile ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "9ab8fd4d-747d-4a2e-988b-125f669e0d73",
+              "name": "therapeutic_use",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).therapeutic_use ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "6c7481d5-9bbd-4112-81ff-51dfb8091590",
+              "name": "dosage",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).dosage ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "1b01bf0b-ef7b-4938-89a0-e803fc5d71af",
+              "name": "side_effects",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).side_effects ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "3e8c42a1-9206-4360-babe-6941a1b843f8",
+              "name": "drug_interactions",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).drug_interactions ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "69fc72ae-352d-4ac3-93e8-2b7c51974572",
+              "name": "contraindications",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).contraindications ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "254bc497-babb-4cb5-b6da-3d1efb398d06",
+              "name": "storage",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).storage ?? {}) }}",
+              "type": "string"
+            },
+            {
+              "id": "aa3f7077-96f4-40b0-be6e-f1af79656e9c",
+              "name": "observations",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).observations ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "9c6fe649-a599-4e37-912b-1d4810531d55",
+              "name": "concerns",
+              "value": "={{ JSON.stringify(JSON.parse($json.output.replace(/```json/g, '').replace(/```/g, '').trim()).concerns ?? []) }}",
+              "type": "string"
+            },
+            {
+              "id": "9e8cadd8-9d08-4a0f-a67d-293d01e3ea54",
+              "name": "name",
+              "value": "={{ $('Set').first().json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "e0d69833-5192-4f73-b27f-b97b5645171d",
+              "name": "timestamp",
+              "value": "={{ $now.toFormat('dd-MM-yyyy') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        1944
+      ],
+      "id": "04d04540-aae4-47ce-8cef-7d9181e854c8",
+      "name": "extract medical"
+    },
+    {
+      "parameters": {
+        "sendTo": "shindapeedikakandy@gmail.com",
+        "subject": "=Medical Inspection Report- {{ $('Set').item.json.inspection_id }}",
+        "message": "=<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Medical Inspection Report</title>\n</head>\n\n<body style=\"margin:0; padding:0; background:#f4f6f9; font-family:Arial, Helvetica, sans-serif; color:#333;\">\n\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f4f6f9; padding:30px 0;\">\n<tr>\n<td align=\"center\">\n\n<table width=\"750\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08);\">\n\n  <!-- HEADER -->\n  <tr>\n    <td style=\"background:#0f172a; padding:30px; text-align:center;\">\n      <h1 style=\"margin:0; color:#ffffff; font-size:28px;\">\n        SMART QUALITY INSPECTION AGENT\n      </h1>\n      <p style=\"margin:8px 0 0; color:#cbd5e1; font-size:14px;\">\n        Medical Inspection Analysis Report\n      </p>\n    </td>\n  </tr>\n\n  <!-- REPORT INFO -->\n  <tr>\n    <td style=\"padding:30px;\">\n\n      <h2 style=\"margin-top:0; color:#0f172a; border-bottom:2px solid #e2e8f0; padding-bottom:10px;\">\n        Report Information\n      </h2>\n\n      <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"border-collapse:collapse;\">\n\n        <tr>\n          <td width=\"220\" style=\"font-weight:bold;\">Inspection ID</td>\n          <td>{{ $('Set').item.json.inspection_id }}</td>\n        </tr>\n\n        <tr style=\"background:#f8fafc;\">\n          <td style=\"font-weight:bold;\">Report Name</td>\n          <td>{{ $('extract medical').first().json.report_name || 'N/A' }}</td>\n        </tr>\n\n        <tr>\n          <td style=\"font-weight:bold;\">Medical Type</td>\n          <td>{{ $('extract medical').first().json.medical_subtype || 'N/A' }}</td>\n        </tr>\n\n      </table>\n\n    </td>\n  </tr>\n\n  <!-- SUMMARY -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <div style=\"background:#eff6ff; border-left:5px solid #2563eb; padding:20px; border-radius:8px;\">\n\n        <h2 style=\"margin-top:0; color:#1e3a8a;\">\n          Summary\n        </h2>\n\n        <p style=\"margin:0; line-height:1.7;\">\n          {{ $('extract medical').first().json.summary || 'No summary available.' }}\n        </p>\n\n      </div>\n\n    </td>\n  </tr>\n\n  <!-- ACCESS STATUS -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <h2 style=\"color:#0f172a;\">\n        Document Accessibility\n      </h2>\n\n      <div style=\"\n        padding:15px;\n        border-radius:8px;\n        font-weight:bold;\n        background: {{\n          $('extract medical').first().json.accessible\n            ? '#dcfce7'\n            : '#fee2e2'\n        }};\n        color: {{\n          $('extract medical').first().json.accessible\n            ? '#166534'\n            : '#991b1b'\n        }};\n      \">\n\n        {{\n          $('extract medical').first().json.accessible\n            ? 'Document Accessible'\n            : 'Document Not Accessible'\n        }}\n\n      </div>\n\n    </td>\n  </tr>\n\n  <!-- PATIENT INFO -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <h2 style=\"color:#0f172a;\">\n        Patient Information\n      </h2>\n\n      {{\n        (() => {\n\n          try {\n\n            const patient =\n              JSON.parse($('extract medical').first().json.patient_info || '{}');\n\n            return `\n\n            <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\"\n              style=\"border-collapse:collapse; border:1px solid #e5e7eb; border-radius:8px;\">\n\n              <tr>\n                <td width=\"220\"><strong>Patient Name</strong></td>\n                <td>${patient.name || 'N/A'}</td>\n              </tr>\n\n              <tr style=\"background:#f9fafb;\">\n                <td><strong>Age</strong></td>\n                <td>${patient.age || 'N/A'}</td>\n              </tr>\n\n              <tr>\n                <td><strong>Gender</strong></td>\n                <td>${patient.gender || 'N/A'}</td>\n              </tr>\n\n              <tr style=\"background:#f9fafb;\">\n                <td><strong>Patient ID</strong></td>\n                <td>${patient.patient_id || 'N/A'}</td>\n              </tr>\n\n            </table>\n\n            `;\n\n          } catch(error) {\n\n            return `\n              <div style=\"padding:15px; background:#fee2e2; border-radius:8px;\">\n                Could not load patient information.\n              </div>\n            `;\n\n          }\n\n        })()\n      }}\n\n    </td>\n  </tr>\n\n  <!-- REPORT HEADER -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <h2 style=\"color:#0f172a;\">\n        Report Header\n      </h2>\n\n      {{\n        (() => {\n\n          try {\n\n            const header =\n              JSON.parse($('extract medical').first().json.report_header || '{}');\n\n            return `\n\n            <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\"\n              style=\"border-collapse:collapse; border:1px solid #e5e7eb; border-radius:8px;\">\n\n              <tr>\n                <td width=\"220\"><strong>Hospital</strong></td>\n                <td>${header.hospital_name || 'N/A'}</td>\n              </tr>\n\n              <tr style=\"background:#f9fafb;\">\n                <td><strong>Lab Registration</strong></td>\n                <td>${header.lab_registration || 'N/A'}</td>\n              </tr>\n\n              <tr>\n                <td><strong>Report Date</strong></td>\n                <td>${header.report_date || 'N/A'}</td>\n              </tr>\n\n              <tr style=\"background:#f9fafb;\">\n                <td><strong>Collection Date</strong></td>\n                <td>${header.collection_date || 'N/A'}</td>\n              </tr>\n\n            </table>\n\n            `;\n\n          } catch(error) {\n\n            return `\n              <div style=\"padding:15px; background:#fee2e2; border-radius:8px;\">\n                Could not load report header.\n              </div>\n            `;\n\n          }\n\n        })()\n      }}\n\n    </td>\n  </tr>\n\n  <!-- TEST RESULTS -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <h2 style=\"color:#0f172a;\">\n        Test Results\n      </h2>\n\n      {{\n        (() => {\n\n          try {\n\n            const tests =\n              JSON.parse($('extract medical').first().json.test_results || '[]');\n\n            if (!tests.length) {\n\n              return `\n                <div style=\"padding:15px; background:#fff7ed; border-radius:8px;\">\n                  No test results available.\n                </div>\n              `;\n\n            }\n\n            return `\n\n            <table width=\"100%\" cellpadding=\"12\" cellspacing=\"0\"\n              style=\"border-collapse:collapse; border:1px solid #e5e7eb;\">\n\n              <tr style=\"background:#0f172a; color:#ffffff;\">\n                <th align=\"left\">Test</th>\n                <th align=\"left\">Value</th>\n                <th align=\"left\">Range</th>\n                <th align=\"left\">Status</th>\n              </tr>\n\n              ${tests.map(test => `\n\n                <tr style=\"border-bottom:1px solid #e5e7eb;\">\n\n                  <td>${test.test_name || 'N/A'}</td>\n\n                  <td>\n                    ${test.value || 'N/A'}\n                    ${test.unit || ''}\n                  </td>\n\n                  <td>${test.reference_range || 'N/A'}</td>\n\n                  <td>${test.status || 'N/A'}</td>\n\n                </tr>\n\n              `).join('')}\n\n            </table>\n\n            `;\n\n          } catch(error) {\n\n            return `\n              <div style=\"padding:15px; background:#fee2e2; border-radius:8px;\">\n                Could not load test results.\n              </div>\n            `;\n\n          }\n\n        })()\n      }}\n\n    </td>\n  </tr>\n\n  <!-- ABNORMAL FINDINGS -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <h2 style=\"color:#0f172a;\">\n        Abnormal Findings\n      </h2>\n\n      {{\n        (() => {\n\n          try {\n\n            const abnormal =\n              JSON.parse($('extract medical').first().json.abnormal_findings || '[]');\n\n            if (!abnormal.length) {\n\n              return `\n                <div style=\"padding:15px; background:#dcfce7; border-radius:8px;\">\n                  No abnormal findings detected.\n                </div>\n              `;\n\n            }\n\n            return abnormal.map(item => `\n\n              <div style=\"\n                border:1px solid #fecaca;\n                background:#fef2f2;\n                padding:15px;\n                border-radius:8px;\n                margin-bottom:10px;\n              \">\n\n                <strong>${item.test_name || 'Unknown Test'}</strong><br>\n\n                Value: ${item.value || 'N/A'}<br>\n\n                Normal Range: ${item.normal_range || 'N/A'}\n\n              </div>\n\n            `).join('');\n\n          } catch(error) {\n\n            return `\n              <div style=\"padding:15px; background:#fee2e2; border-radius:8px;\">\n                Could not load abnormal findings.\n              </div>\n            `;\n\n          }\n\n        })()\n      }}\n\n    </td>\n  </tr>\n\n  <!-- DISCLAIMER -->\n  <tr>\n    <td style=\"padding:0 30px 30px;\">\n\n      <div style=\"background:#fff7ed; border-left:5px solid #f97316; padding:20px; border-radius:8px;\">\n\n        <h3 style=\"margin-top:0; color:#9a3412;\">\n          Disclaimer\n        </h3>\n\n        <p style=\"margin:0; line-height:1.7;\">\n          {{ $('extract medical').first().json.disclaimer || 'No disclaimer available.' }}\n        </p>\n\n      </div>\n\n    </td>\n  </tr>\n\n  <!-- FOOTER -->\n  <tr>\n    <td style=\"background:#0f172a; padding:25px; text-align:center;\">\n\n      <p style=\"margin:0; color:#cbd5e1; font-size:13px;\">\n        Generated By: Smart Quality Inspection Agent\n      </p>\n\n      <p style=\"margin:8px 0 0; color:#94a3b8; font-size:12px;\">\n        This document is for internal quality review only.<br>\n        Retain for audit and compliance records.\n      </p>\n\n    </td>\n  </tr>\n\n</table>\n\n</td>\n</tr>\n</table>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        928,
+        1944
+      ],
+      "id": "ca71feb9-f2a8-4de8-956c-4818db4b3ccd",
+      "name": "Send a message",
+      "webhookId": "4fe98bae-61e1-4bbe-a237-1431061f0545",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "RRPyoPBR86RGj82U",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s",
+          "mode": "list",
+          "cachedResultName": "Quality Inspection Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2105685216,
+          "mode": "list",
+          "cachedResultName": "medical",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Om5yLFHkrAAPw3IqaoHD68QvK-7T-d8uOkXeb5Kjx5s/edit#gid=2105685216"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1152,
+        1944
+      ],
+      "id": "54108416-23a0-4cdd-92cf-8d2363276c09",
+      "name": "medical inspection",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "X73VYbImkfDFWskt",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        2352
+      ],
+      "id": "8bd42d08-a524-4c27-8005-5ef4f2ea2fa0",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pbYxwdc4eCgJ3mFS",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract AI Results": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Is Software Defect?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack - QA Review Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PASSED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Route by Inspection Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PASSED": {
+      "main": [
+        [
+          {
+            "node": "PASSED PRODUCT LIST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "REVIEW": {
+      "main": [
+        [
+          {
+            "node": "REVIEWED PRODUCTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "REJECTED": {
+      "main": [
+        [
+          {
+            "node": "REJECTED PRODUCTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Inspection Type": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "document": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "software": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plant": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Software Defect?": {
+      "main": [
+        [
+          {
+            "node": "Create GitHub Issue",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Google Doc Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create GitHub Issue": {
+      "main": [
+        [
+          {
+            "node": "Create Google Doc Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack - QA Review Alert": {
+      "main": [
+        [
+          {
+            "node": "REVIEW",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Google Doc Report": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download as PDF": {
+      "main": [
+        [
+          {
+            "node": "REJECTED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "software",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Report content": {
+      "main": [
+        [
+          {
+            "node": "Download as PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Report content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "REJECTED",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "products": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Plant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "products",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Plant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "software",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "document",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "extract medical",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "extract medical",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "extract medical": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "medical inspection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3d4b88cd-7c94-44f8-b97b-82409effcde6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "70bc115d11051e0d53fc7d3f775f962fdd69678649b491e4526f04b437b8b694"
+  },
+  "id": "H4Q9169zwAET9b5J",
+  "tags": []
+}
